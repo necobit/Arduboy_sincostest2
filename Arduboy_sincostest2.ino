@@ -9,9 +9,11 @@ int my = 20;
 int oy = 32;
 int i;
 int lp = 1;
+boolean Upls = false;
+boolean Dpls = false;
 
 void setup() {
-//  Serial.begin(115200);
+  //  Serial.begin(115200);
   arduboy.begin();
   arduboy.setFrameRate(60);
   arduboy.clear();
@@ -32,12 +34,30 @@ void loop() {
   if (mx >= 128) {
     mx = 0;
     arduboy.clear();
-    lp ++;
-    if (lp > 20) lp = 1;
     arduboy.setCursor(0, 0);
     arduboy.print(lp);
   }
   arduboy.fillCircle(mx, my + oy , 1, WHITE);
   arduboy.display();
-  //  delay(10);
+  if (arduboy.pressed(UP_BUTTON)) {
+    if (Upls == false) {
+      if (lp < 20) lp ++;
+      Upls = true;
+    }
+  }
+  if (arduboy.notPressed(UP_BUTTON)) {
+    Upls = false;
+  }
+
+  if (arduboy.pressed(DOWN_BUTTON)) {
+    if (Dpls == false) {
+      if (lp > 1) lp --;
+      Dpls = true;
+    }
+  }
+  if (arduboy.notPressed(DOWN_BUTTON)) {
+    Dpls = false;
+  }
+
+//  delay(10);
 }
