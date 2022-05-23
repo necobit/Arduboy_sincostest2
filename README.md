@@ -1,1 +1,2 @@
+Arduboyで三角関数を使ってサイン波を足し算していくテストです。
 # Arduboy_sincostest2
