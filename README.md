@@ -1,2 +1,3 @@
 Arduboyで三角関数を使ってサイン波を足し算していくテストです。
+描画のところだけ変えればM5Stackとかでも動くと思います。
 # Arduboy_sincostest2
