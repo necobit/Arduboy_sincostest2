@@ -5,7 +5,9 @@
 Arduboy arduboy;
 
 int mx = 0;
+int omx = mx;
 int my = 20;
+int omy = my;
 int oy = 32;
 int i;
 int lp = 1;
@@ -33,12 +35,15 @@ void loop() {
   if (mx <= 0) mx = 0;
   if (mx >= 128) {
     mx = 0;
+    omx = 0;
     arduboy.clear();
     arduboy.setCursor(0, 0);
     arduboy.print(lp);
   }
-  arduboy.fillCircle(mx, my + oy , 1, WHITE);
+  arduboy.drawLine(omx, omy+oy, mx, my + oy , WHITE);
   arduboy.display();
+  omx = mx;
+  omy = my;
   if (arduboy.pressed(UP_BUTTON)) {
     if (Upls == false) {
       if (lp < 20) lp ++;
